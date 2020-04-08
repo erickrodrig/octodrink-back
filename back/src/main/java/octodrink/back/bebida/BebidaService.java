@@ -9,51 +9,50 @@ import org.springframework.web.client.HttpStatusCodeException;
 @Service
 public class BebidaService {
     @Autowired
-    private final BebidaRepository bebidaRepository;
+    private final BebidaRepository repository;
 
-    public BebidaService(BebidaRepository bebidaRepository) {
-        this.bebidaRepository = bebidaRepository;
+    public BebidaService(BebidaRepository repository) {
+        this.repository = repository;
     }
 
-    private Bebida buildObj(Bebida bebida, BebidaDTO bebidaDTO){
-        bebida.setNome(bebidaDTO.getNome());
-        bebida.setCodigo(bebidaDTO.getCodigo());
-        bebida.setDescricao(bebidaDTO.getDescricao());
-        bebida.setQtdCaixa(bebidaDTO.getQtdCaixa());
-        bebida.setPreco(bebidaDTO.getPreco());
-        bebida.setPeso(bebidaDTO.getPeso());
-        bebida.setValidade(bebidaDTO.getValidade());
-        bebida.setLinhaCategoria(bebidaDTO.getLinhaCategoria());
-
-        return bebida;
+    private void buildObj(Bebida bebida, BebidaDTO dto){
+        bebida.setNome(dto.getNome());
+        bebida.setCodigo(dto.getCodigo());
+        bebida.setDescricao(dto.getDescricao());
+        bebida.setQtdCaixa(dto.getQtdCaixa());
+        bebida.setPreco(dto.getPreco());
+        bebida.setPeso(dto.getPeso());
+        bebida.setUnPeso(dto.getUnPeso());
+        bebida.setValidade(dto.getValidade());
+        bebida.setLinhaCategoria(dto.getLinhaCategoria());
     }
 
-    public BebidaDTO save(BebidaDTO bebidaDTO) {
+    public BebidaDTO save(BebidaDTO dto) {
         Bebida bebida = new Bebida();
 
-        buildObj(bebida, bebidaDTO);
+        buildObj(bebida, dto);
 
-        return BebidaDTO.of(bebidaRepository.save(bebida));
+        return BebidaDTO.of(repository.save(bebida));
     }
 
     public Bebida findById(String id) throws HttpStatusCodeException {
-        if (bebidaRepository.findById(id).isPresent()) {
-            return bebidaRepository.findById(id).get();
+        if (repository.findById(id).isPresent()) {
+            return repository.findById(id).get();
         }
         throw new HttpServerErrorException(HttpStatus.NOT_FOUND, String.format("Bebida de ID '%s' não encontrada.", id));
     }
 
-    public BebidaDTO update(BebidaDTO bebidaDTO){
-        Bebida bebida = findById(bebidaDTO.getId());
+    public BebidaDTO update(BebidaDTO dto){
+        Bebida bebida = findById(dto.getId());
 
-        buildObj(bebida, bebidaDTO);
+        buildObj(bebida, dto);
 
-        return BebidaDTO.of(bebidaRepository.save(bebida));
+        return BebidaDTO.of(repository.save(bebida));
     }
 
     public void delete(String id){
         findById(id);
 
-        bebidaRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }

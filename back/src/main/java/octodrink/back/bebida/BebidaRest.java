@@ -17,8 +17,8 @@ public class BebidaRest {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<BebidaDTO> save(@Valid @RequestBody BebidaDTO bebida){
-        return ResponseEntity.ok(service.save(bebida));
+    public ResponseEntity<BebidaDTO> save(@Valid @RequestBody BebidaDTO dto){
+        return ResponseEntity.ok(service.save(dto));
     }
 
     @GetMapping("/{id}")
@@ -27,8 +27,8 @@ public class BebidaRest {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<BebidaDTO> update(@Valid @RequestBody BebidaDTO bebida){
-        return ResponseEntity.ok(service.update(bebida));
+    public ResponseEntity<BebidaDTO> update(@Valid @RequestBody BebidaDTO dto){
+        return ResponseEntity.ok(service.update(dto));
     }
 
     @DeleteMapping("/delete/{id}")

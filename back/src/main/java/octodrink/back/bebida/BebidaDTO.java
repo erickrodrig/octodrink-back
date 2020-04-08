@@ -12,10 +12,11 @@ public class BebidaDTO {
     private Integer qtdCaixa;
     private Double preco;
     private Double peso;
+    private UnPeso unPeso;
     private LocalDate validade;
     private LinhaCategoria linhaCategoria;
 
-    public BebidaDTO(String id, String nome, String codigo, String descricao, Integer qtdCaixa, Double preco, Double peso, LocalDate validade, LinhaCategoria linhaCategoria) {
+    public BebidaDTO(String id, String nome, String codigo, String descricao, Integer qtdCaixa, Double preco, Double peso, UnPeso unPeso, LocalDate validade, LinhaCategoria linhaCategoria) {
         this.id = id;
         this.nome = nome;
         this.codigo = codigo;
@@ -23,6 +24,7 @@ public class BebidaDTO {
         this.qtdCaixa = qtdCaixa;
         this.preco = preco;
         this.peso = peso;
+        this.unPeso = unPeso;
         this.validade = validade;
         this.linhaCategoria = linhaCategoria;
     }
@@ -36,6 +38,7 @@ public class BebidaDTO {
                 bebida.getQtdCaixa(),
                 bebida.getPreco(),
                 bebida.getPeso(),
+                bebida.getUnPeso(),
                 bebida.getValidade(),
                 bebida.getLinhaCategoria()
         );
@@ -95,6 +98,14 @@ public class BebidaDTO {
 
     public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public UnPeso getUnPeso() {
+        return unPeso;
+    }
+
+    public void setUnPeso(UnPeso unPeso) {
+        this.unPeso = unPeso;
     }
 
     public LocalDate getValidade() {

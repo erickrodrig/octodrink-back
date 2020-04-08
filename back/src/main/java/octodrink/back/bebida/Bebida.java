@@ -16,19 +16,21 @@ public class Bebida {
     private Integer qtdCaixa;
     private Double preco;
     private Double peso;
+    private UnPeso unPeso;
     private LocalDate validade;
     private LinhaCategoria linhaCategoria;
 
     public Bebida() {
     }
 
-    public Bebida(String nome, String codigo, String descricao, Integer qtdCaixa, Double preco, Double peso, LocalDate validade, LinhaCategoria linhaCategoria) {
+    public Bebida(String nome, String codigo, String descricao, Integer qtdCaixa, Double preco, Double peso, UnPeso unPeso, LocalDate validade, LinhaCategoria linhaCategoria) {
         this.nome = nome;
         this.codigo = codigo;
         this.descricao = descricao;
         this.qtdCaixa = qtdCaixa;
         this.preco = preco;
         this.peso = peso;
+        this.unPeso = unPeso;
         this.validade = validade;
         this.linhaCategoria = linhaCategoria;
     }
@@ -87,6 +89,14 @@ public class Bebida {
 
     public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public UnPeso getUnPeso() {
+        return unPeso;
+    }
+
+    public void setUnPeso(UnPeso unPeso) {
+        this.unPeso = unPeso;
     }
 
     public LocalDate getValidade() {
