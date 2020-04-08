@@ -10,17 +10,17 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository repository;
 
-    private Categoria buildCat(Categoria categoria, CategoriaDTO categoriaDTO){
-        categoria.setNome(categoriaDTO.getNome());
-        categoria.setCodigo(categoriaDTO.getCodigo());
+    private Categoria buildCat(Categoria categoria, CategoriaDTO dto){
+        categoria.setNome(dto.getNome());
+        categoria.setCodigo(dto.getCodigo());
 
         return categoria;
     }
 
-    public CategoriaDTO save(CategoriaDTO categoriaDTO){
+    public CategoriaDTO save(CategoriaDTO dto){
         Categoria categoria = new Categoria();
 
-        buildCat(categoria, categoriaDTO);
+        buildCat(categoria, dto);
 
         return CategoriaDTO.of(repository.save(categoria));
     }
@@ -32,10 +32,10 @@ public class CategoriaService {
         throw new HttpServerErrorException(HttpStatus.NOT_FOUND, String.format("Categoria de ID '%s' não encontrada.", id));
     }
 
-    public CategoriaDTO update(CategoriaDTO categoriaDTO){
-        Categoria categoria = findById(categoriaDTO.getId());
+    public CategoriaDTO update(CategoriaDTO dto){
+        Categoria categoria = findById(dto.getId());
 
-        buildCat(categoria, categoriaDTO);
+        buildCat(categoria, dto);
 
         return CategoriaDTO.of(repository.save(categoria));
     }

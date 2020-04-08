@@ -15,8 +15,8 @@ public class CategoriaRest {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<CategoriaDTO> save(@RequestBody CategoriaDTO categoria){
-        return ResponseEntity.ok(service.save(categoria));
+    public ResponseEntity<CategoriaDTO> save(@RequestBody CategoriaDTO dto){
+        return ResponseEntity.ok(service.save(dto));
     }
 
     @GetMapping("/{id}")
@@ -25,8 +25,8 @@ public class CategoriaRest {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<CategoriaDTO> update(@RequestBody CategoriaDTO categoria){
-        return ResponseEntity.ok(service.update(categoria));
+    public ResponseEntity<CategoriaDTO> update(@RequestBody CategoriaDTO dto){
+        return ResponseEntity.ok(service.update(dto));
     }
 
     @DeleteMapping("/delete/{id}")
