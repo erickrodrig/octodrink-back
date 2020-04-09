@@ -1,4 +1,4 @@
-package octodrink.back.bebida;
+package complements.enums;
 
 public enum UnPeso {
     ml("ml"),

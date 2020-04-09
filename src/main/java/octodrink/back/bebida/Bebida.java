@@ -1,6 +1,8 @@
 package octodrink.back.bebida;
 
+import complements.enums.UnPeso;
 import octodrink.back.linha.categoria.LinhaCategoria;
+import complements.classes.Image;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,11 +21,12 @@ public class Bebida {
     private UnPeso unPeso;
     private LocalDate validade;
     private LinhaCategoria linhaCategoria;
+    private Image img;
 
     public Bebida() {
     }
 
-    public Bebida(String nome, String codigo, String descricao, Integer qtdCaixa, Double preco, Double peso, UnPeso unPeso, LocalDate validade, LinhaCategoria linhaCategoria) {
+    public Bebida(String nome, String codigo, String descricao, Integer qtdCaixa, Double preco, Double peso, UnPeso unPeso, LocalDate validade, LinhaCategoria linhaCategoria, Image img) {
         this.nome = nome;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -33,6 +36,7 @@ public class Bebida {
         this.unPeso = unPeso;
         this.validade = validade;
         this.linhaCategoria = linhaCategoria;
+        this.img = img;
     }
 
     public String getId() {
@@ -113,5 +117,13 @@ public class Bebida {
 
     public void setLinhaCategoria(LinhaCategoria linhaCategoria) {
         this.linhaCategoria = linhaCategoria;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
     }
 }
