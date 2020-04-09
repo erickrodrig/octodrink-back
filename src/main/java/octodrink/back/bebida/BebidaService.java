@@ -1,10 +1,13 @@
 package octodrink.back.bebida;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
+
+import java.util.Random;
 
 @Service
 public class BebidaService {
@@ -13,18 +16,6 @@ public class BebidaService {
 
     public BebidaService(BebidaRepository repository) {
         this.repository = repository;
-    }
-
-    private void buildObj(Bebida bebida, BebidaDTO dto){
-        bebida.setNome(dto.getNome());
-        bebida.setCodigo(dto.getCodigo());
-        bebida.setDescricao(dto.getDescricao());
-        bebida.setQtdCaixa(dto.getQtdCaixa());
-        bebida.setPreco(dto.getPreco());
-        bebida.setPeso(dto.getPeso());
-        bebida.setUnPeso(dto.getUnPeso());
-        bebida.setValidade(dto.getValidade());
-        bebida.setLinhaCategoria(dto.getLinhaCategoria());
     }
 
     public BebidaDTO save(BebidaDTO dto) {
@@ -42,7 +33,7 @@ public class BebidaService {
         throw new HttpServerErrorException(HttpStatus.NOT_FOUND, String.format("Bebida de ID '%s' não encontrada.", id));
     }
 
-    public BebidaDTO update(BebidaDTO dto){
+    public BebidaDTO update(BebidaDTO dto) {
         Bebida bebida = findById(dto.getId());
 
         buildObj(bebida, dto);
@@ -50,9 +41,36 @@ public class BebidaService {
         return BebidaDTO.of(repository.save(bebida));
     }
 
-    public void delete(String id){
+    public void delete(String id) {
         findById(id);
 
         repository.deleteById(id);
+    }
+
+    private void buildObj(Bebida bebida, BebidaDTO dto) {
+        bebida.setNome(dto.getNome());
+        bebida.setCodigo(codigoRandom());
+        bebida.setDescricao(dto.getDescricao());
+        bebida.setQtdCaixa(dto.getQtdCaixa());
+        bebida.setPreco(dto.getPreco());
+        bebida.setPeso(dto.getPeso());
+        bebida.setUnPeso(dto.getUnPeso());
+        bebida.setValidade(dto.getValidade());
+        bebida.setLinhaCategoria(dto.getLinhaCategoria());
+        bebida.setImg(dto.getImg());
+    }
+
+    private String codigoRandom() {
+        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        StringBuilder codigo = new StringBuilder();
+
+        while (codigo.length() < 3) {
+            codigo.append(letters.charAt(new Random().nextInt(letters.length())));
+        }
+
+        codigo.append(StringUtils.leftPad(String.valueOf(new Random().nextInt(999)), 3, "0"));
+
+        return codigo.toString();
     }
 }
