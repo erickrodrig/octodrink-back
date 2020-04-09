@@ -10,12 +10,9 @@ public class LinhaCategoriaService {
     @Autowired
     private LinhaCategoriaRepository repository;
 
-    private LinhaCategoria constructObj(LinhaCategoria linhaCategoria, LinhaCategoriaDTO dto){
+    private void constructObj(LinhaCategoria linhaCategoria, LinhaCategoriaDTO dto){
         linhaCategoria.setNome(dto.getNome());
-        linhaCategoria.setCodigo(dto.getCodigo());
         linhaCategoria.setCategoria(dto.getCategoria());
-
-        return linhaCategoria;
     }
 
     public LinhaCategoriaDTO save(LinhaCategoriaDTO dto){

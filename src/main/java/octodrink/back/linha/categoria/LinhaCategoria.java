@@ -9,15 +9,13 @@ public class LinhaCategoria {
     @Id
     String id;
     String nome;
-    String codigo;
     Categoria categoria;
 
     public LinhaCategoria() {
     }
 
-    public LinhaCategoria(String nome, String codigo, Categoria categoria) {
+    public LinhaCategoria(String nome, Categoria categoria) {
         this.nome = nome;
-        this.codigo = codigo;
         this.categoria = categoria;
     }
 
@@ -35,14 +33,6 @@ public class LinhaCategoria {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public Categoria getCategoria() {

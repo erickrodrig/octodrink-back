@@ -2,16 +2,23 @@ package octodrink.back.linha.categoria;
 
 import octodrink.back.categoria.Categoria;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class LinhaCategoriaDTO {
     private String id;
+
+    @NotBlank
+    @Size(min = 2, max = 50, message = "Tamanho do nome inválido. Deve conter entre 2 e 50 caracteres.")
     private String nome;
-    private String codigo;
+
+    @NotNull
     private Categoria categoria;
 
-    public LinhaCategoriaDTO(String id, String nome, String codigo, Categoria categoria) {
+    public LinhaCategoriaDTO(String id, String nome, Categoria categoria) {
         this.id = id;
         this.nome = nome;
-        this.codigo = codigo;
         this.categoria = categoria;
     }
 
@@ -19,7 +26,6 @@ public class LinhaCategoriaDTO {
         return new LinhaCategoriaDTO(
                 linhaCategoria.getId(),
                 linhaCategoria.getNome(),
-                linhaCategoria.getCodigo(),
                 linhaCategoria.getCategoria()
         );
     }
@@ -38,14 +44,6 @@ public class LinhaCategoriaDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public Categoria getCategoria() {

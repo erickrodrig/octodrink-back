@@ -14,10 +14,8 @@ public class CategoriaService {
         this.repository = repository;
     }
 
-    private Categoria buildCat(Categoria categoria, CategoriaDTO dto){
+    private void buildCat(Categoria categoria, CategoriaDTO dto){
         categoria.setNome(dto.getNome());
-
-        return categoria;
     }
 
     public CategoriaDTO save(CategoriaDTO dto){
