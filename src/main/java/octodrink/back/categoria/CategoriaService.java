@@ -10,6 +10,10 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository repository;
 
+    public CategoriaService(CategoriaRepository repository) {
+        this.repository = repository;
+    }
+
     private Categoria buildCat(Categoria categoria, CategoriaDTO dto){
         categoria.setNome(dto.getNome());
 
