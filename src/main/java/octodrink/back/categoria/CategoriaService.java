@@ -12,7 +12,6 @@ public class CategoriaService {
 
     private Categoria buildCat(Categoria categoria, CategoriaDTO dto){
         categoria.setNome(dto.getNome());
-        categoria.setCodigo(dto.getCodigo());
 
         return categoria;
     }

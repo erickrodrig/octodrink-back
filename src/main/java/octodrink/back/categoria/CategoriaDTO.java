@@ -3,19 +3,16 @@ package octodrink.back.categoria;
 public class CategoriaDTO {
     private String id;
     private String nome;
-    private String codigo;
 
-    public CategoriaDTO(String id, String nome, String codigo) {
+    public CategoriaDTO(String id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.codigo = codigo;
     }
 
     public static CategoriaDTO of (Categoria categoria){
         return new CategoriaDTO(
                 categoria.getId(),
-                categoria.getNome(),
-                categoria.getCodigo()
+                categoria.getNome()
         );
     }
 
@@ -33,13 +30,5 @@ public class CategoriaDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 }
