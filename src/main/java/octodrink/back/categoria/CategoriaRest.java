@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("categoria")
 public class CategoriaRest {
@@ -15,7 +17,7 @@ public class CategoriaRest {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<CategoriaDTO> save(@RequestBody CategoriaDTO dto){
+    public ResponseEntity<CategoriaDTO> save(@Valid @RequestBody CategoriaDTO dto){
         return ResponseEntity.ok(service.save(dto));
     }
 
@@ -25,7 +27,7 @@ public class CategoriaRest {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<CategoriaDTO> update(@RequestBody CategoriaDTO dto){
+    public ResponseEntity<CategoriaDTO> update(@Valid @RequestBody CategoriaDTO dto){
         return ResponseEntity.ok(service.update(dto));
     }
 

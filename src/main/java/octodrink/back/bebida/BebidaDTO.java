@@ -36,7 +36,7 @@ public class BebidaDTO {
     public BebidaDTO() {
     }
 
-    public BebidaDTO(String id, String codigo, Image img, @NotBlank @Size(min = 2, max = 50, message = "Tamanho do nome inválido. Deve conter entre 2 e 50 caracteres.") String nome, @NotBlank @Size(min = 5, max = 250, message = "Tamanho da descrição inválido. Deve conter entre 5 e 250 caracteres.") String descricao, @NotNull Integer qtdCaixa, @NotNull Double preco, @NotNull Double peso, @NotNull UnPeso unPeso, @NotNull LocalDate validade, @NotNull LinhaCategoria linhaCategoria) {
+    public BebidaDTO(String id, String codigo, Image img, String nome, String descricao, Integer qtdCaixa, Double preco, Double peso, UnPeso unPeso, LocalDate validade, LinhaCategoria linhaCategoria) {
         this.id = id;
         this.codigo = codigo;
         this.img = img;
