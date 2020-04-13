@@ -2,9 +2,7 @@ package octodrink.back.bebida;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 
 import java.util.Random;
@@ -30,7 +28,7 @@ public class BebidaService {
         if (repository.findById(id).isPresent()) {
             return repository.findById(id).get();
         }
-        throw new HttpServerErrorException(HttpStatus.NOT_FOUND, String.format("Bebida de ID '%s' não encontrada.", id));
+        throw new IllegalArgumentException(String.format("Bebida de ID '%s' não encontrada.", id));
     }
 
     public BebidaDTO update(BebidaDTO dto) {
